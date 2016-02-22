@@ -1,0 +1,97 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <title>团队日志</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <!--标准mui.css-->
+        <link rel="stylesheet" href="css/mui.min.css">
+        <!--App自定义的css-->
+        <link rel="stylesheet" href="css/app.css" />
+        <link rel="stylesheet" href="css/log.css" />
+        <script type="text/javascript" src="js/mui.min.js" ></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/angular.js"></script>
+    </head>
+<body ng-app="myApp" ng-controller="myController">
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="inner.html"></a>
+        <h1 class="mui-title"></h1>
+    </header>
+    <ul class="mui-table-view mui-content-padded">
+        <li class=" mui-table-view-cell ">
+            <a class="blue-line-wrapper ">
+                <div class="blue-line "></div>
+                <span class="mui-pull-right inner-org-name ">团队活动</span>
+            </a>
+        </li>
+    </ul>
+    <div class="mui-clearfix"></div>
+    <div class="mui-content" id="content">
+        <div class="log-content" ng-repeat="log in logs">
+            <div class="mui-content-padded">
+                <p class="title" ng-cloak>{{log.LogTitle}}</p>
+                <p class="mui-pull-right" ng-cloak>{{log.UpTime}}</p>
+                <p ng-cloak >
+                    <img class="log-img" ng-src="{{log.IndexPic}}" />
+                    {{log.PreText}}
+                </p>
+            </div>
+        </div>
+        <div class="mui-content-padded pages">
+            <ul class="mui-pagination mui-pagination-sm">
+                <li pre-directive class="mui-previous">
+                    <a href="#">&laquo;</a>
+                </li>
+                <li page-directive ng-repeat="page in pages">
+                    <a href="#" ng-cloak>{{page.index}}</a>
+                </li>
+                <li next-directive class="mui-next">
+                    <a href="#">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        mui.init({
+            swipeBack: true //启用右滑关闭功能
+        });
+    <script type="text/javascript" src="js/share.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var id=getCookies('id','; ','=');
+            var content = document.getElementById('content');
+            var org_name = getCookies('comName', '; ', '=');
+            $('.mui-title').html(org_name);
+            function autoProduce(data) {
+                var data = eval(data);
+                for (var i = 0; i < data.Logs.length; i++) {
+                    mui_content_padded = document.createElement('div');
+                    mui_content_padded.setAttribute('class', 'mui-content-padded');
+                    title = document.createElement('p');
+                    title.setAttribute('class', 'title');
+                    text1 = document.createTextNode(data.Logs[i].LogTitle);
+                    title.appendChild(text1);
+                    time = document.createElement('p');
+                    time.setAttribute('class', 'mui-pull-right');
+                    text2 = document.createTextNode(data.Logs[i].UpTime);
+                    time.appendChild(text2);
+                    details = document.createElement('p');
+                    img = document.createElement('img');
+                    img.setAttribute('src', "http://community.new.ncuhome.cn" + data.Logs[i].IndexPic);
+                    img.setAttribute('class', 'log-img');
+                    text3 = document.createTextNode(data.Logs[i].PreText);
+                    details.appendChild(img);
+                    details.appendChild(text3);
+                    mui_content_padded.appendChild(title);
+                    mui_content_padded.appendChild(time);
+                    mui_content_padded.appendChild(details);
+                    content.appendChild(mui_content_padded);
+                }
+            }
+            jsonAjax('community/log/'+id, 'GET', '', autoProduce);
+        }
+    </script>
+</body>
+</html>

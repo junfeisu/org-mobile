@@ -1,0 +1,153 @@
+.mui-bar {
+	position: absolute;
+}
+.ask {
+	display: inline-block;
+	margin: 0px !important;
+	/*padding: 0px !important;*/
+	
+	margin-top: 10px !important;
+	float: right;
+	padding-top: 10px !important;
+	margin-top: -1px !important;
+	padding-top: 5px !important;
+}
+.my {
+	padding-top: 5px !important;
+}
+.cell {
+	margin-top: 17px;
+	margin-bottom: 10px !important;
+}
+.ask-pic {
+	height: 17px;
+	margin-top: 3px;
+	margin-left: 6px;
+	float: right;
+}
+.mui-bar-nav~.mui-content {
+	padding-top: 0px;
+}
+#modal .mui-bar-nav~.mui-content {
+	padding-top: 44px;
+}
+.left-part {
+	width: 85%;
+}
+.user-name,
+.time {
+	font-size: 12px;
+	/*padding-left: 10px;*/
+	
+	line-height: 20px;
+}
+.user-name {
+	color: #18B4ED;
+	padding-right: 10px;
+}
+.sub {
+	float: right;
+	margin-right: 5px
+}
+.left-part {
+	line-height: 16px;
+	font-size: 12px;
+}
+.mui-table-view {
+	/*border-top: 1px solid #CCCCCC;*/
+	/*border-bottom: 1px solid #CCCCCC;*/
+}
+.mui-table-view-cell:after {
+	height: 0px;
+}
+.mui-table-view-cell {
+	margin-left: 15px;
+	padding-bottom: 3px !important;
+	padding-top: 3px !important;
+}
+.mui-table-view-cell:first-child {
+	margin-left: 0px;
+}
+.mui-table-view-cell a {
+	color: #3879D9;
+	padding-left: 10px;
+}
+.blue-line {
+	height: 38px;
+	width: 7px;
+	background-color: #18B4ED;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 11px !important;
+}
+.blue-line-wrapper {
+	float: left;
+	margin-top: 0px;
+}
+.head {
+	margin-top: 44px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.inner-org-name {
+	margin-top: 6px;
+}
+.mui-search {
+	margin-top: -10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#que {
+	border: 0px;
+	border-radius: 0px;
+}
+.all {
+	margin-top: -23px;
+}
+.text-block {
+	margin-top: 44px;
+}
+.mui-bar {
+	position: absolute;
+}
+.mui-table-view {
+	margin: 10px 10px 0px 10px;
+}
+.mui-content {
+	padding-top: 0px !important;
+}
+.poster {
+	width: 102px;
+	float: left;
+	margin: 10px;
+}
+.mui-content-padded {
+	padding-top: 2px;
+	margin-top: 0px;
+}
+.mui-content-padded {
+	background: #FFFFFF;
+}
+header {
+	background: #18B4ED !important;
+}
+.mui-bar .mui-icon {
+	color: #FFFFFF;
+}
+.mui-table-view-cell {
+	padding: 0px 0px;
+}
+.head {
+	margin-top: 44px;
+}
+.blue-line {
+	height: 30px;
+	width: 7px;
+	margin-bottom: 0px !important;
+}
+.blue-line-wrapper {
+	margin: -1px 0px !important;
+}
+.inner-org-name {
+	margin-top: 0px;
+}

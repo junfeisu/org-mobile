@@ -1,0 +1,131 @@
+.mui-pull-left,
+			.mui-pull-right,
+			.mui-title {
+				color: white;
+			}
+			#datalist {
+				margin-top: 5px;
+			}
+			.mui-bar,
+			.mui-bar-nav {
+				background-color: #F7F7F7;
+			}
+			.mui-icon-bars {
+				color: #007AFF;
+				font-weight: 500 !important;
+			}
+			#info {
+				margin-top: 8px;
+				margin-top: 8px;
+			}
+			.mui-bar .mui-title {
+				right: auto;
+			}
+			html,
+			body {
+				background-color: #efeff4;
+				font-family: 'Microsoft YaHei', Arial, Helvetica, sans-serif;
+			}
+			span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				margin-left: -15px;
+				padding-right: 10px;
+			}
+			.mui-off-canvas-right {
+				color: #000;
+			}
+			.title {
+				margin: 35px 15px 10px;
+			}
+			.title+.content {
+				margin: 10px 15px 35px;
+				color: #bbb;
+				text-indent: 1em;
+				font-size: 14px;
+				line-height: 24px;
+			}
+			.title {
+				margin-bottom: 15px;
+				margin: 0px;
+				color: #FFF;
+				margin-top: 9px;
+				margin-left: 15px;
+			}
+			.iconpic {
+				background-color: #FFF;
+				width: 27px !important;
+				float: left;
+				display: inline-block;
+				margin-right: 8px;
+				border-radius: 15px;
+			}
+			.org-name {
+				color: #FFF;
+				font-size: 15px;
+				float: left;
+				font-weight: 400;
+				line-height: 29px !important;
+			}
+			.inner-org-img {
+				background-color: #FFF;
+				width: 30px !important;
+				float: left;
+				display: inline-block;
+				margin-right: 8px;
+				border-radius: 15px;
+			}
+			.inner-org-name {
+				font-size: 17px;
+				font-weight: 400;
+				color: #000;
+				float: left;
+				line-height: 30px;
+				font-family: 'Microsoft YaHei', Arial, Helvetica, sans-serif;
+			}
+			.blue-line {
+				height: 39px;
+				width: 6px;
+				background-color: #18B4ED;
+				float: left;
+				margin-right: 10px;
+			}
+			.blue-line-wrapper {
+				padding-left: 0px !important;
+			}
+			.mui-navigate-right {
+				background: 0 0;
+				padding: 9px 14px !important;
+				font-size: 14px;
+			}
+			.mui-bar .mui-icon:active {
+				opacity: 1;
+				font-weight: 900 !important;
+			}
+			.mui-bar .mui-icon {
+				opacity: 1;
+				font-weight: 500 !important;
+			}
+			.mui-table-view-cell>a:not(.mui-btn) {
+				padding: 3px 0px;
+			}
+			header {
+				background: #18B4ED !important;
+			}
+			header a {
+				color: #FFFFFF !important;
+			}
+			.mui-content{
+				/*background-color: #FFFFFF;*/
+			}
+			.mui-content-padded{
+				margin-top: 0px;
+				background-color: #FFFFFF;
+			}
+			.mui-content-padded p{
+				color: #464646;
+				padding: 10px;
+			}
+			.mui-table-view{
+				margin: 0px 10px;
+			}

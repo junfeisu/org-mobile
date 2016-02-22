@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>社团组织</title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />	
+		<link rel="stylesheet" href="css/inner.css" />
+    </head>
+
+	<body>
+		<!--侧滑菜单容器-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+			<!--菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-left">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+                            <li class="mui-table-view-cell"><a class="mui-navigate-right" href="index.html">首页</a> </li>
+							<li class="mui-table-view-cell"><a class="mui-navigate-right" href="inner.html">社团资料</a> </li>
+							<li class="mui-table-view-cell"><a class="mui-navigate-right" href="tele.html">联系方式</a> </li>
+							<li class="mui-table-view-cell"> <a class="mui-navigate-right" href="member.html">成员秀场</a> </li>
+							<li class="mui-table-view-cell"> <a class="mui-navigate-right" href="activity.html">团队照片</a> </li>
+							<li class=" mui-table-view-cell "> <a class="mui-navigate-right " href="log.html">团队日志</a></li>
+							<li class="mui-table-view-cell "> <a class="mui-navigate-right " href="news.html">最新动态</a> </li>
+							<li class="mui-table-view-cell "> <a class="mui-navigate-right " href="talk.html">侃侃而谈</a> </li>
+							<!--跳转页面-->
+							<li class="mui-table-view-cell "> <a class="mui-navigate-right " href="join.html">join us</a> </li>
+						</ul>
+						<script>
+							offCanvasWrapper.addEventListener('tap', function(event) {
+								var target = event.target;
+								for (; target && target !== offCanvasWrapper; target = target.parentNode) {
+									var isFound = false;
+									if (target.tagName === 'A' && !target.hash && target.href) {
+										isFound = true;
+										location.href = target.href;
+									}
+									if (isFound) {
+										break;
+									}
+								}
+							});
+						</script>
+					</div>
+				</div>
+			</aside>
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<h1 id="info" class="mui-title">
+						<img class="inner-org-img" src="" />
+										<span class="org-name"></span>
+					</h1>
+					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+				</header>
+				<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+					<div class="mui-scroll">
+
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a class="blue-line-wrapper">
+									<div class="blue-line"></div>
+									<span class="mui-pull-right inner-org-name">社团资料</span>
+								</a>
+							</li>
+						</ul>
+						<div class="mui-content">
+							<div class="mui-content-padded">
+ 							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+		</script>
+		<script type="text/javascript" src='js/jquery.min.js'></script>
+		<script type="text/javascript" src='js/share.js'></script>
+		<script type="text/javascript">
+            window.onload = function () {
+                var org_name=getCookies('comName','; ','=');
+                $('.org-name').html(org_name);
+			    var mui_content_padded = document.getElementsByClassName('mui-content-padded');
+			    var logoSrc = getCookies('logosrc', '; ', '=');
+			    var id = getCookies('id', '; ', '=');
+			    var inner_org_img = document.getElementsByClassName('inner-org-img');
+			    inner_org_img[0].setAttribute('src', logoSrc);
+				function autoProduce(data){
+					var data=eval(data);
+					p=document.createElement('p');
+					text=document.createTextNode(data.community.CommunityIntroduction);
+					p.appendChild(text);
+					mui_content_padded[0].appendChild(p);
+				}
+				jsonAjax('community/details/'+id,'GET','',autoProduce);
+			}
+		</script>
+	</body>
+
+</html>

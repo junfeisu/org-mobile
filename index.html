@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>社团组织</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+        <link rel="icon" href="http://www.ncuhome.cn/2014/images/ncuhome_01.png" />
+		<link rel="stylesheet" href="css/index.css" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/angular.js"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myController">
+        <div class="mui-bar mui-bar-nav">
+            <div class="mui-input-row mui-search">
+                <input type="search" ng-model="searchValue" class="mui-input-clear" style="color: #FFF;">
+                <img ng-click="search()" class='search' src="img/search.png" height="25" width="25" alt="">
+            </div>
+            <button id="nav-open-button">
+                <img src="img/login.png" class="button-icon" />
+            </button>
+        </div>
+        <!--登陆 -->
+        <div class="prove bubble" id="first" ng-show="login">
+            <div class="demo clearfix">
+                <span class="triangle">
+                    <img src="img/bubble.png" />
+                </span>
+                <div class="article">
+                    <a class="login" href="javascript:void(0)" ng-cloak>
+                        <img src="img/denglu.png" class="login-icon" />
+                        {{loginHtml}}
+                    </a>
+                    <a href="#" class="exit">
+                        <img src="img/tuichu.png" class="quit" />
+                        退出
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--主体 -->
+        <div class="mui-content">
+            <div id="slider" class="mui-slider">
+                <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+                    <a order="whole" class="mui-control-item" ng-click="wholeShow()">全部</a>
+                    <a order="first" class="mui-control-item" ng-click="firstShow()">一级</a>
+                    <a order="second" class="mui-control-item"  ng-click="secondShow()">二级</a>
+                </div>
+            </div>
+            <div class="mui-slider-group" id="mui-slider-group">
+                <div id="item1mobile" class="mui-slider-item mui-control-content" ng-show="whole">
+                  <ul class="mui-table-view">
+                    <a list-directive ng-repeat="all in alls" class="mui-table-view-cell" href="log.html" logosrc="{{all.CommunityLogo}}" index="{{all.CommunityId}}" name="{{all.CommunityName}}">
+                        <img ng-src="{{all.CommunityLogo}}" class="iconpic">
+                        <span class="org-name" ng-cloak>{{all.CommunityName}}</span>
+                    </a>
+                  </ul>
+                </div>
+                <div class="mui-slider-item mui-control-content mui-active" ng-show="first">
+                    <ul class="mui-table-view">
+                        <a list-directive ng-repeat="first in firsts" class="mui-table-view-cell" href="inner.html" logosrc="{{first.CommunityLogo}}" index="{{first.CommunityId}}" name="{{first.CommunityName}}">
+                            <img ng-src="{{first.CommunityLogo}}" class="iconpic">
+                            <span class="org-name" ng-cloak>{{first.CommunityName}}</span>
+                        </a>
+                    </ul>
+                </div>
+                <div id="item3mobile" class="mui-slider-item mui-control-content" ng-show="second">
+                    <ul class="mui-table-view">
+                        <a list-directive ng-repeat="second in seconds" class="mui-table-view-cell" href="inner.html" logosrc="{{second.CommunityLogo}}" index="{{second.CommunityId}}" name="{{second.CommunityName}}">
+                            <img ng-src="{{second.CommunityLogo}}" class="iconpic">
+                            <span class="org-name" ng-cloak>{{second.CommunityName}}</span>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <!-- 底部 -->
+            <footer>
+                <div class="mui-content-padded">
+                    <h6>©2015 家园工作室 </h6>
+                </div>
+            </footer>
+        </div>
+		<script type="text/javascript" src="js/share.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+	</body>
+</html>

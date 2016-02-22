@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>my-ask</title>
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link rel="stylesheet" href="css/talk.css" />
+ 		<script src="js/mui.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="inner.html"></a>
+			<h1 class="mui-title"></h1>
+		</header>
+		<ul class="mui-table-view mui-content-padded head">
+			<li class=" mui-table-view-cell ">
+				<a class="blue-line-wrapper ">
+					<div class="blue-line "></div>
+					<span class="mui-pull-right inner-org-name ">我的提问</span>
+				</a>
+			</li>
+		</ul>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+
+ 			</div>
+
+			<div id="reply" class="mui-modal">
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-icon mui-icon-close mui-pull-right" href="#reply"></a>
+					<h1 class="mui-title">我要回复</h1>
+				</header>
+				<div class="mui-content text-block" style="height: 100%;">
+					<div class="mui-input-row">
+						<textarea id="textarea" rows="5" placeholder="我要回复"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/share.js"></script>
+        <script>
+            var id = getCookies('id', '; ', '=');
+            var mui_content_padded = document.getElementsByClassName('mui-content-padded');
+            var studentId = getCookies('studentid', '; ', '=');
+            var isLogin = getCookies('islogin', '; ', '=');
+            var org_name = getCookies('comName', '; ', '=');
+            $('.mui-title').html(org_name);
+            function autoProduce(data) {
+                var data = eval(data);
+                for (var i = 0; i < data.MyQuestion.length; i++) {
+                    mui_table_view = document.createElement('ul');
+                    mui_table_view.setAttribute('class', 'mui-table-view');
+                    mui_table_view_cell1 = document.createElement('li');
+                    mui_table_view_cell1.setAttribute('class', 'mui-table-view-cell');
+                    img1 = document.createElement('img');
+                    img1.setAttribute('src', 'http://community.new.ncuhome.cn' + data.MyQuestion[i].HeadPic);
+                    img1.setAttribute('class', 'iconpic mui-pull-left');
+                    mui_pull_right = document.createElement('div');
+                    mui_pull_right.setAttribute('class', 'mui-pull-right left-part');
+                    username = document.createElement('span');
+                    username.setAttribute('class', 'user-name mui-pull-left');
+                    text1 = document.createTextNode(data.MyQuestion[i].NickName);
+                    username.appendChild(text1);
+                    time1 = document.createElement('span');
+                    time1.setAttribute('class', 'time mui-pull-left');
+                    text2 = document.createTextNode(data.MyQuestion[i].Time);
+                    time1.appendChild(text2);
+                    clear1 = document.createElement('div');
+                    clear1.setAttribute('class', 'mui-clearfix');
+                    question = document.createElement('p');
+                    text3 = document.createTextNode(data.MyQuestion[i].MessageContent);
+                    question.appendChild(text3);
+                    mui_table_view_cell1.appendChild(img1);
+                    mui_table_view_cell1.appendChild(mui_pull_right);
+                    mui_table_view_cell1.appendChild(username);
+                    mui_table_view_cell1.appendChild(time1);
+                    mui_table_view_cell1.appendChild(clear1);
+                    mui_table_view_cell1.appendChild(question);
+                    mui_table_view.appendChild(mui_table_view_cell1);
+
+                    for (var p = 0; p < data.MyQuestion[i].Replies.length; p++) {
+                        mui_table_view_cell = document.createElement('li');
+                        mui_table_view_cell.setAttribute('class', 'mui-table-view-cell');
+                        img = document.createElement('img');
+                        img.setAttribute('src', 'http://community.new.ncuhome.cn' + data.MyQuestion[i].HeadPic);
+                        img.setAttribute('class', 'iconpic mui-pull-left');
+                        mui_pull_right = document.createElement('div');
+                        mui_pull_right.setAttribute('class', 'mui-pull-right left-part');
+                        username = document.createElement('span');
+                        username.setAttribute('class', 'user-name mui-pull-left');
+                        text1 = document.createTextNode(data.MyQuestion[i].NickName);
+                        username.appendChild(text1);
+                        time = document.createElement('span');
+                        time.setAttribute('class', 'time mui-pull-left');
+                        text2 = document.createTextNode(data.MyQuestion[i].Time);
+                        time.appendChild(text2);
+                        clear = document.createElement('div');
+                        clear.setAttribute('class', 'mui-clearfix');
+                        question = document.createElement('p');
+                        text3 = document.createTextNode(data.MyQuestion[i].MessageContent);
+                        question.appendChild(text3);
+                        mui_table_view_cell.appendChild(img);
+                        mui_table_view_cell.appendChild(mui_pull_right);
+                        mui_table_view_cell.appendChild(username);
+                        mui_table_view_cell.appendChild(time);
+                        mui_table_view_cell.appendChild(clear);
+                        mui_table_view_cell.appendChild(question);
+                        mui_table_view.appendChild(mui_table_view_cell);
+                    }
+                    mui_content_padded[0].appendChild(mui_table_view);
+                }
+            }
+            if (isLogin == 'false') {
+                p=document.createElement('p');
+                text = document.createTextNode('请您先登录');
+                p.appendChild(text);
+                mui_content_padded[0].appendChild(p);
+            }
+            else {
+                jsonAjax('community/message/' + id, 'GET', 'studentid=' + studentId, autoProduce);
+            }
+        </script>
+	</body>
+
+</html>

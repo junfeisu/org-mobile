@@ -1,0 +1,142 @@
+﻿<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>最新动态</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" href="css/app.css" />
+		<link rel="stylesheet" href="css/news.css" />
+	</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="inner.html"></a>
+        <h1 class="mui-title"></h1>
+    </header>
+    <ul class="mui-table-view mui-content-padded">
+        <li class=" mui-table-view-cell ">
+            <a class="blue-line-wrapper ">
+                <div class="blue-line "></div>
+                <span class="mui-pull-right inner-org-name ">团队活动</span>
+            </a>
+        </li>
+    </ul>
+    <div class="mui-clearfix"></div>
+    <div class="mui-content">
+    </div>
+
+    <script>
+        mui.init({
+            swipeBack: true //启用右滑关闭功能
+        });
+        (function ($) {
+            $('.mui-pagination').on('tap', 'a', function () {
+                var li = this.parentNode;
+                var classList = li.classList;
+                if (!classList.contains('mui-active') && !classList.contains('mui-disabled')) {
+                    var active = li.parentNode.querySelector('.mui-active');
+                    if (classList.contains('mui-previous')) { //previous
+                        if (active) {
+                            var previous = active.previousElementSibling;
+                            console.log('previous', previous);
+                            if (previous && !previous.classList.contains('mui-previous')) {
+                                $.trigger(previous.querySelector('a'), 'tap');
+                            } else {
+                                classList.add('mui-disabled');
+                            }
+                        }
+                    } else if (classList.contains('mui-next')) { //next
+                        if (active) {
+                            var next = active.nextElementSibling;
+                            if (next && !next.classList.contains('mui-next')) {
+                                $.trigger(next.querySelector('a'), 'tap');
+                            } else {
+                                classList.add('mui-disabled');
+                            }
+                        }
+                    } else { //page
+                        active.classList.remove('mui-active');
+                        classList.add('mui-active');
+                        var page = parseInt(this.innerText);
+                        var previousPageElement = li.parentNode.querySelector('.mui-previous');
+                        var nextPageElement = li.parentNode.querySelector('.mui-next');
+                        previousPageElement.classList.remove('mui-disabled');
+                        nextPageElement.classList.remove('mui-disabled');
+                        if (page <= 1) {
+                            previousPageElement.classList.add('mui-disabled');
+                        } else if (page >= 5) {
+                            nextPageElement.classList.add('mui-disabled');
+                        }
+                    }
+                }
+            });
+        })(mui);
+    </script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/share.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var content = document.getElementsByClassName('mui-content');
+            var org_name = getCookies('comName', '; ', '=');
+            var id=getCookies('id','; ','=');
+            $('.mui-title').html(org_name);
+            function autoProduce(data) {
+                var data = eval(data);
+                for (var i = 0; i < data.activities.length; i++) {
+                    mui_content_padded = document.createElement('div');
+                    mui_content_padded.setAttribute('class', 'mui-content-padded');
+                    poster = document.createElement('img');
+                    poster.setAttribute('class', 'poster');
+                    poster.setAttribute('src', 'http://community.new.ncuhome.cn' + data.activities[i].Poster);
+                    rightIntr = document.createElement('div');
+                    rightIntr.setAttribute('class', 'right-intr');
+
+                    var arr = new Array('活动名称：', '活动时间：', '活动地点：', '参与人员：', '活动简介：');
+                    var arr1 = new Array(5);
+                    arr1[0] = data.activities[i].ActivityName,
+                    arr1[1] = data.activities[i].ActivityTimeBegain + "-" + data.activities[i].ActivityTimeEnd;
+                    arr1[2] = data.activities[i].ActivityPlace;
+                    arr1[3] = data.activities[i].JoinMember;
+                    arr1[4] = data.activities[i].ActivityIntroduction;
+
+                    for (var m = 0; m < 3; m++) {
+                        p1 = document.createElement('p');
+                        text1 = document.createTextNode(arr[m]);
+                        p1.appendChild(text1);
+                        p2 = document.createElement('p');
+                        text2 = document.createTextNode(arr1[m]);
+                        p2.appendChild(text2);
+                        rightIntr.appendChild(p1);
+                        rightIntr.appendChild(p2);
+                    }
+
+                    clear = document.createElement('div');
+                    clear.setAttribute('class', 'mui-clearfix');
+                    bottomIntr = document.createElement('div');
+                    bottomIntr.setAttribute('class', 'bottom-intr');
+                    p1 = document.createElement('p');
+                    text1 = document.createTextNode(arr[4]);
+                    p1.appendChild(text1);
+                    p2 = document.createElement('p');
+                    text2 = document.createTextNode(arr1[4]);
+                    p2.appendChild(text2);
+                    bottomIntr.appendChild(p1);
+                    bottomIntr.appendChild(p2);
+
+                    mui_content_padded.appendChild(poster);
+                    mui_content_padded.appendChild(rightIntr);
+                    mui_content_padded.appendChild(clear);
+                    mui_content_padded.appendChild(bottomIntr);
+                    content[0].appendChild(mui_content_padded);
+                }
+            }
+            jsonAjax('community/activity/'+id, 'GET', '', autoProduce);
+        }
+    </script>
+</body>
+</html>
