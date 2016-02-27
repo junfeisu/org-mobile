@@ -8,14 +8,17 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="css/mui.min.css">
-		<!--App自定义的css-->
-		<link rel="stylesheet" type="text/css" href="css/app.css" />
+        <!--App自定义的css-->
+        <link rel="stylesheet" type="text/css" href="css/app.css" />
         <link rel="icon" href="http://www.ncuhome.cn/2014/images/ncuhome_01.png" />
-		<link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/index.css" />
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/angular.js"></script>
-	</head>
-	<body ng-app="myApp" ng-controller="myController">
+		<script type="text/javascript" src="js/share.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+	</body>
+    </head>
+    <body ng-app="myApp" ng-controller="myController">
         <div class="mui-bar mui-bar-nav">
             <div class="mui-input-row mui-search">
                 <input type="search" ng-model="searchValue" class="mui-input-clear" style="color: #FFF;">
@@ -32,7 +35,7 @@
                     <img src="img/bubble.png" />
                 </span>
                 <div class="article">
-                    <a class="login" href="javascript:void(0)" ng-cloak>
+                    <a class="login" href="http://passport.new.ncuhome.cn/Members/Account/Login?ReturnURL=http://community.new.ncuhome.cn/organization/index.html" ng-cloak>
                         <img src="img/denglu.png" class="login-icon" />
                         {{loginHtml}}
                     </a>
@@ -55,7 +58,7 @@
             <div class="mui-slider-group" id="mui-slider-group">
                 <div id="item1mobile" class="mui-slider-item mui-control-content" ng-show="whole">
                   <ul class="mui-table-view">
-                    <a list-directive ng-repeat="all in alls" class="mui-table-view-cell" href="log.html" logosrc="{{all.CommunityLogo}}" index="{{all.CommunityId}}" name="{{all.CommunityName}}">
+                    <a list-directive ng-repeat="all in alls" class="mui-table-view-cell" href="inner.html" logosrc="{{all.CommunityLogo}}" index="{{all.CommunityId}}" name="{{all.CommunityName}}">
                         <img ng-src="{{all.CommunityLogo}}" class="iconpic">
                         <span class="org-name" ng-cloak>{{all.CommunityName}}</span>
                     </a>
@@ -85,7 +88,4 @@
                 </div>
             </footer>
         </div>
-		<script type="text/javascript" src="js/share.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-	</body>
 </html>

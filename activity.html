@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
@@ -58,9 +57,6 @@
 			mui.init();
 		</script>
 	</head>
-
-
-
 		<body>
 			<header class="mui-bar mui-bar-nav">
 				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="inner.html"></a>
@@ -76,45 +72,42 @@
 			</ul>
 			<div class="wrap" id="wrap">
    			</div>
-		
-		<!--<script src="js/mui.min.js"></script>-->
-	<script src="js/mui.zoom.js"></script>
-	<script src="js/mui.previewimage.js"></script>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/share.js"></script>
-	<script>
-		mui.previewImage();
-	</script>
-	<script type="text/javascript">
-		window.onload=function(){
-		    var wrap = document.getElementById('wrap');
-		    var org_name = getCookies('comName', '; ', '=');
-		    $('.mui-title').html(org_name);
-			function autoProduce(data){
-				var data=eval(data);
-				for(var i=0;i<data.activities.length;i++){
-					div=document.createElement('div');
-					a=document.createElement('a');
-					a.setAttribute('href','javascript:void(0)');
-					img=document.createElement('img');
-					img.setAttribute('src','http://community.new.ncuhome.cn'+data.activities[i].Poster);
-					img.setAttribute('data-preview-src','');
-					img.setAttribute('data-preview-group','1');
-					a.appendChild(img);
-					p=document.createElement('p');
-					text=document.createTextNode(data.activities[i].ActivityIntroduction);
-					p.appendChild(text);
-					div.appendChild(a);
-					div.appendChild(p);
-					wrap.appendChild(div);
+			<script src="js/mui.zoom.js"></script>
+			<script src="js/mui.previewimage.js"></script>
+			<script type="text/javascript" src="js/jquery.min.js"></script>
+			<script type="text/javascript" src="js/share.js"></script>
+			<script>
+				mui.previewImage();
+			</script>
+			<script type="text/javascript">
+				window.onload=function(){
+				    var wrap = document.getElementById('wrap');
+				    var org_name = getCookies('comName', '; ', '=');
+				    $('.mui-title').html(org_name);
+					function autoProduce(data){
+						var data=eval(data);
+						for(var i=0;i<data.activities.length;i++){
+							div=document.createElement('div');
+							a=document.createElement('a');
+							a.setAttribute('href','javascript:void(0)');
+							img=document.createElement('img');
+							img.setAttribute('src','http://community.new.ncuhome.cn'+data.activities[i].Poster);
+							img.setAttribute('data-preview-src','');
+							img.setAttribute('data-preview-group','1');
+							a.appendChild(img);
+							p=document.createElement('p');
+							text=document.createTextNode(data.activities[i].ActivityIntroduction);
+							p.appendChild(text);
+							div.appendChild(a);
+							div.appendChild(p);
+							wrap.appendChild(div);
+						}
+					}
+
+					jsonAjax('community/activity/8','GET','',autoProduce);
+
 				}
-			}
-
-			jsonAjax('community/activity/8','GET','',autoProduce);
-
-		}
-	</script>
-
-</body>
+			</script>
+		</body>
 
 </html>

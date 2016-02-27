@@ -1,10 +1,8 @@
-var app=angular.module('myApp',[]);
-
 //总控制器
-app.controller('myController',function($scope,mySerice,$document){
-	mySerice.request(function(data){
+app.controller('myController',function($scope,myService,$document){
+	myService.request(function(data){
 		init(data,$scope);
-	},'GET','/community/allcommunity',{contentType:'application/json'},'');
+	},'GET','/community/allcommunity','');
 	$scope.whole=true;
 	$scope.first=false;
 	$scope.second=false;
@@ -34,31 +32,14 @@ app.controller('myController',function($scope,mySerice,$document){
 	})
 
 	$scope.search=function(){
-		mySerice.request(function(data){
+		myService.request(function(data){
 			$('.mui-table-view-cell').hide();
 			init(data,$scope);
 		},'GET','/community/communitysearch?search='+$scope.searchValue,{contentType:'application/json'},'');
 	}
 });
 
-//请求服务
-app.factory('mySerice',function($http){
-	var rootUrl='http://community.new.ncuhome.cn'
-	return {
-		request:function(callback,way,path,head,para){
-			var promise=$http({
-				url:rootUrl+path,
-				method:way,
-				data:para,
-				header:head
-			});
-			promise.success(callback);
-			promise.error(function(err){
-				console.log(err);
-			})
-		}
-	}
-});
+
 
 //社团入口
 app.directive('listDirective',function(){
@@ -72,7 +53,6 @@ app.directive('listDirective',function(){
 		}
 	}
 });
-
 
 //初始化函数
 function init(data,obj){

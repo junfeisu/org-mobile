@@ -39,59 +39,13 @@
                 </p>
             </div>
         </div>
-        <div class="mui-content-padded pages">
-            <ul class="mui-pagination mui-pagination-sm">
-                <li pre-directive class="mui-previous">
-                    <a href="#">&laquo;</a>
-                </li>
-                <li page-directive ng-repeat="page in pages">
-                    <a href="#" ng-cloak>{{page.index}}</a>
-                </li>
-                <li next-directive class="mui-next">
-                    <a href="#">&raquo;</a>
-                </li>
-            </ul>
-        </div>
     </div>
     <script>
         mui.init({
             swipeBack: true //启用右滑关闭功能
         });
-    <script type="text/javascript" src="js/share.js"></script>
-    <script type="text/javascript">
-        window.onload = function () {
-            var id=getCookies('id','; ','=');
-            var content = document.getElementById('content');
-            var org_name = getCookies('comName', '; ', '=');
-            $('.mui-title').html(org_name);
-            function autoProduce(data) {
-                var data = eval(data);
-                for (var i = 0; i < data.Logs.length; i++) {
-                    mui_content_padded = document.createElement('div');
-                    mui_content_padded.setAttribute('class', 'mui-content-padded');
-                    title = document.createElement('p');
-                    title.setAttribute('class', 'title');
-                    text1 = document.createTextNode(data.Logs[i].LogTitle);
-                    title.appendChild(text1);
-                    time = document.createElement('p');
-                    time.setAttribute('class', 'mui-pull-right');
-                    text2 = document.createTextNode(data.Logs[i].UpTime);
-                    time.appendChild(text2);
-                    details = document.createElement('p');
-                    img = document.createElement('img');
-                    img.setAttribute('src', "http://community.new.ncuhome.cn" + data.Logs[i].IndexPic);
-                    img.setAttribute('class', 'log-img');
-                    text3 = document.createTextNode(data.Logs[i].PreText);
-                    details.appendChild(img);
-                    details.appendChild(text3);
-                    mui_content_padded.appendChild(title);
-                    mui_content_padded.appendChild(time);
-                    mui_content_padded.appendChild(details);
-                    content.appendChild(mui_content_padded);
-                }
-            }
-            jsonAjax('community/log/'+id, 'GET', '', autoProduce);
-        }
     </script>
+    <script type="text/javascript" src="js/share.js"></script>
+    <script type="text/javascript" src="js/log.js"></script>
 </body>
 </html>

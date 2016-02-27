@@ -35,6 +35,24 @@ function jsonAjax(url,type,param,callback){
     })
 }
 
+//angular
+var app=angular.module('myApp',[]);
 
-
-
+app.factory('myService',function($http){
+	var rootPath='http://community.new.ncuhome.cn';
+	return{
+		request:function(callback,way,path,para){
+			promise=$http({
+				url:rootPath+path,
+				method:way,
+				data:para,
+				contentType:'application/json',
+				dataType:'json'
+			});
+			promise.success(callback);
+			promise.error(function(err){
+				console.log(err)
+			})
+		}
+	}
+})
