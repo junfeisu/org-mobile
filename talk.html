@@ -47,14 +47,13 @@
 						<li class="mui-table-view-cell" ng-repeat="repl in repls" ng-init="$last?addAnswer():''">
 							<img src="http://community.new.ncuhome.cn/content/images/defalt.png" class="iconpic mui-pull-left">
 							<div class="mui-pull-right left-part"></div>
-							<span class="user-name mui-pull-left">{{repl.UserName}}</span>
-							<span class="time mui-pull-left">{{repl.Time}}</span>
+							<span class="user-name mui-pull-left" ng-cloak>{{repl.UserName}}</span>
+							<span class="time mui-pull-left" ng-cloak>{{repl.Time}}</span>
 							<div class="mui-clearfix"></div>
-							<p>
+							<p ng-cloak>
 								{{repl.Content}}
 							</p>
 						</li>
-
 					</ul>
   				</div>
 			</div>

@@ -11,8 +11,13 @@ app.controller('talkController',function($scope,myService){
 	},'GET','/community/message/'+Cookie.id,'');
 	// 当渲染到最后一条回复时添加回复的按钮
 	$scope.addAnswer=function(){
-		$('<a href="#reply" class="entr">回复</a>').appendTo($('.mui-content-padded').children().children().last().children().last())
+		$('<a href="#reply" answer-directive class="entr">回复</a>').appendTo($('.mui-content-padded').children().children().last().children().last());
+		$('.mui-content-padded').children().children().last().children().last().addClass('reply');
 	};
+	$('.reply').delegate('a','click',function(){
+		alert('13');
+		setCookies('messageid',$(this).parent().parent().parent().attr('messageid'),1)
+	})
 
 	$scope.ask=function(){
 		var ques = JSON.stringify({
@@ -22,12 +27,12 @@ app.controller('talkController',function($scope,myService){
             HeadPic: Cookie.userLogo
         });
 		myService.request(function(data){
-			postQues();
+			postQues(data);
 		},'POST','/community/Question/'+Cookie.id,ques)
 	}
 
 	$scope.answer=function(){
-		// var MessageId=
+		var MessageId=getCookies('messageid','; ','=');
 		var answ = JSON.stringify({
 	        MessageContent: $scope.answ,
 	        StudentId: Cookie.studentId,
@@ -35,7 +40,7 @@ app.controller('talkController',function($scope,myService){
 	        HeadPic: Cookie.userLogo
 	    })
 		myService.request(function(data){
-			postAnsw(data);
+			postQues(data);
 		},'POST','/community/reply'+MessageId,answ)
 	}
 })
@@ -55,7 +60,7 @@ function init(data,obj){
 				'UserName':data.messages[i].NickName
 			})
 			for(var j=0;j<data.messages[i].Replies.length;j++){
-					repl.push(data.messages[i].Replies[j])
+				repl.push(data.messages[i].Replies[j])
 			}
 		}
 		obj.mesgs=mes;
