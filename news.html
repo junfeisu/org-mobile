@@ -7,10 +7,14 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<!--标准mui.css-->
-		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="src/css/mui.min.css">
 		<!--App自定义的css-->
-		<link rel="stylesheet" href="css/app.css" />
-		<link rel="stylesheet" href="css/news.css" />
+		<link rel="stylesheet" href="src/css/app.css" />
+		<link rel="stylesheet" href="src/css/news.css" />
+        <script type="text/javascript" src="src/js/jquery.min.js"></script>
+        <script type="text/javascript" src="src/js/angular.js"></script>
+        <script type="text/javascript" src="src/js/angular-localstorage.js"></script>
+        <script type="text/javascript" src="lib/js/config.js"></script>
 	</head>
 
 <body>
@@ -29,7 +33,6 @@
     <div class="mui-clearfix"></div>
     <div class="mui-content">
     </div>
-
     <script>
         mui.init({
             swipeBack: true //启用右滑关闭功能
@@ -77,66 +80,7 @@
             });
         })(mui);
     </script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/share.js"></script>
-    <script type="text/javascript">
-        window.onload = function () {
-            var content = document.getElementsByClassName('mui-content');
-            var org_name = getCookies('comName', '; ', '=');
-            var id=getCookies('id','; ','=');
-            $('.mui-title').html(org_name);
-            function autoProduce(data) {
-                var data = eval(data);
-                for (var i = 0; i < data.activities.length; i++) {
-                    mui_content_padded = document.createElement('div');
-                    mui_content_padded.setAttribute('class', 'mui-content-padded');
-                    poster = document.createElement('img');
-                    poster.setAttribute('class', 'poster');
-                    poster.setAttribute('src', 'http://community.new.ncuhome.cn' + data.activities[i].Poster);
-                    rightIntr = document.createElement('div');
-                    rightIntr.setAttribute('class', 'right-intr');
-
-                    var arr = new Array('活动名称：', '活动时间：', '活动地点：', '参与人员：', '活动简介：');
-                    var arr1 = new Array(5);
-                    arr1[0] = data.activities[i].ActivityName,
-                    arr1[1] = data.activities[i].ActivityTimeBegain + "-" + data.activities[i].ActivityTimeEnd;
-                    arr1[2] = data.activities[i].ActivityPlace;
-                    arr1[3] = data.activities[i].JoinMember;
-                    arr1[4] = data.activities[i].ActivityIntroduction;
-
-                    for (var m = 0; m < 3; m++) {
-                        p1 = document.createElement('p');
-                        text1 = document.createTextNode(arr[m]);
-                        p1.appendChild(text1);
-                        p2 = document.createElement('p');
-                        text2 = document.createTextNode(arr1[m]);
-                        p2.appendChild(text2);
-                        rightIntr.appendChild(p1);
-                        rightIntr.appendChild(p2);
-                    }
-
-                    clear = document.createElement('div');
-                    clear.setAttribute('class', 'mui-clearfix');
-                    bottomIntr = document.createElement('div');
-                    bottomIntr.setAttribute('class', 'bottom-intr');
-                    p1 = document.createElement('p');
-                    text1 = document.createTextNode(arr[4]);
-                    p1.appendChild(text1);
-                    p2 = document.createElement('p');
-                    text2 = document.createTextNode(arr1[4]);
-                    p2.appendChild(text2);
-                    bottomIntr.appendChild(p1);
-                    bottomIntr.appendChild(p2);
-
-                    mui_content_padded.appendChild(poster);
-                    mui_content_padded.appendChild(rightIntr);
-                    mui_content_padded.appendChild(clear);
-                    mui_content_padded.appendChild(bottomIntr);
-                    content[0].appendChild(mui_content_padded);
-                }
-            }
-            jsonAjax('community/activity/'+id, 'GET', '', autoProduce);
-        }
-    </script>
+     <script type="text/javascript" src="lib/js/controller.js"></script>
+     <script type="text/javascript" src="lib/js/directive.js"></script>
 </body>
 </html>

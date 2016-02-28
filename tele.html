@@ -1,20 +1,23 @@
-﻿  <!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<title>联系方式</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link rel="stylesheet" href="css/mui.min.css">
-		<link rel="stylesheet" type="text/css" href="css/app.css" />
-		<link rel="stylesheet" href="css/tele.css" />
+		<link rel="stylesheet" href="src/css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="src/css/app.css" />
+		<link rel="stylesheet" href="src/css/tele.css" />
+        <script src="src/js/mui.min.js"></script>
+        <script type="text/javascript" src="src/js/jquery.min.js"></script>
+        <script type="text/javascript" src="src/js/angular.js"></script>
+        <script type="text/javascript" src="src/js/angular-localstorage.js"></script>
+        <script type="text/javascript" src="lib/js/config.js"></script>
    	</head>
 
 <body>
     <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
-
         <div class="mui-inner-wrap">
             <header class="mui-bar mui-bar-nav">
                 <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="inner.html"></a>
@@ -46,48 +49,8 @@
             </div>
         </div>
     </div>
-
-    <script src="js/mui.min.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/share.js"></script>
-    <script type="text/javascript">
-        window.onload = function () {
-            var details = document.getElementsByClassName('details');
-            var id = getCookies('id', '; ', '=');
-            var mui_icon_search = document.getElementsByClassName('mui-icon-search');
-            var org_name = getCookies('comName', '; ', '=');
-            $('.mui-title').html(org_name);
-            function autoProduce(data) {
-                var data = eval(data);
-                var arr = new Array('负责人：', '电话：', '社团QQ：', '微信：', '微博：');
-                var arr1 = new Array(5);
-                arr1[0] = data.community.Head,
-	            arr1[1] = data.community.CommunityTel;
-                arr1[2] = data.community.CommunityQQ;
-                arr1[3] = data.community.CommunityWeixin;
-                arr1[4] = data.community.CommunityWeibo;
-               
-                for (var i = 0; i < 5; i++) {
-                    h4 = document.createElement('h4');
-                    p = document.createElement('p');
-                    text = document.createTextNode(arr[i] + arr1[i]);
-                    p.appendChild(text);
-                    h4.appendChild(p)
-                    details[0].appendChild(h4);
-                }
-            }
-
-            function search() {
-                
-            }
-            jsonAjax('community/details/' + id, 'GET', '', autoProduce);
-
-            mui_icon_search[0].onclick = function () {
-                alert('123');
-                search();
-            }
-        }
-    </script>
+    <script type="text/javascript" src="lib/js/controller.js"></script>
+    <script type="text/javascript" src="lib/js/directive.js"></script>
     <script>
         mui.init({
             swipeBack: true //启用右滑关闭功能

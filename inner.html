@@ -1,16 +1,19 @@
 ﻿<!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>社团组织</title>
-		<script src="js/mui.min.js"></script>
-		<link href="css/mui.min.css" rel="stylesheet" />	
-		<link rel="stylesheet" href="css/inner.css" />
+		<script type="text/javascript" src="src/js/mui.min.js"></script>
+		<script type="text/javascript" src='src/js/jquery.min.js'></script>
+		<script type="text/javascript" src='src/js/angular.js'></script>
+		<script type="text/javascript" src='src/js/angular-localstorage.js'></script>
+		<script type="text/javascript" src='lib/js/config.js'></script>
+		<link href="src/css/mui.min.css" rel="stylesheet" />	
+		<link rel="stylesheet" href="src/css/inner.css" />
     </head>
 
-	<body>
+	<body ng-app="myApp" ng-controller="innerCtrl">
 		<!--侧滑菜单容器-->
 		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
 			<!--菜单部分-->
@@ -80,27 +83,8 @@
 				swipeBack: true //启用右滑关闭功能
 			});
 		</script>
-		<script type="text/javascript" src='js/jquery.min.js'></script>
-		<script type="text/javascript" src='js/share.js'></script>
-		<script type="text/javascript">
-            window.onload = function () {
-                var org_name=getCookies('comName','; ','=');
-                $('.org-name').html(org_name);
-			    var mui_content_padded = document.getElementsByClassName('mui-content-padded');
-			    var logoSrc = getCookies('logosrc', '; ', '=');
-			    var id = getCookies('id', '; ', '=');
-			    var inner_org_img = document.getElementsByClassName('inner-org-img');
-			    inner_org_img[0].setAttribute('src', logoSrc);
-				function autoProduce(data){
-					var data=eval(data);
-					p=document.createElement('p');
-					text=document.createTextNode(data.community.CommunityIntroduction);
-					p.appendChild(text);
-					mui_content_padded[0].appendChild(p);
-				}
-				jsonAjax('community/details/'+id,'GET','',autoProduce);
-			}
-		</script>
+		<script type="text/javascript" src="lib/js/controller.js"></script>
+        <script type="text/javascript" src="lib/js/directive.js"></script>
 	</body>
 
 </html>

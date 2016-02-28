@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 		<title>招新报名</title>
-		<link href="css/mui.min.css" rel="stylesheet" />
-		<link href="css/style.css" rel="stylesheet" />
-		<link rel="stylesheet" href="css/join.css" />
+		<link href="src/css/mui.min.css" rel="stylesheet" />
+		<link href="src/css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="src/css/join.css" />
 		<meta name="description" content="Card Expansion Effect with SVG clipPath" />
 	    <meta name="keywords" content="clipPath, svg, effect, layout, expansion, images, grid, polygon" />
 	    <meta name="author" content="Claudio Calautti for Codrops" />
@@ -14,8 +14,13 @@
 	    <link rel="stylesheet" type="text/css" href="http://freshman.ncuhome.cn/joinus2015/css/normalize.css" />
 	    <link rel="stylesheet" type="text/css" href="http://freshman.ncuhome.cn/joinus2015/fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
 	    <link rel="stylesheet" type="text/css" href="http://freshman.ncuhome.cn/joinus2015/css/demo.css" />
-	    <link rel="stylesheet" type="text/css" href="css/join.css" />
+	    <link rel="stylesheet" type="text/css" href="src/css/join.css" />
 	    <link rel="stylesheet" type="text/css" href="http://freshman.ncuhome.cn/joinus2015/css/pattern.css" />
+	    <script type="text/javascript" src="src/js/mui.min.js"></script>
+		<script type="text/javascript" src="src/js/jquery.min.js"></script>
+	    <script type="text/javascript" src="src/js/angular.js"></script>
+	    <script type="text/javascript" src="src/js/angular-localstorage.js"></script>
+	    <script type="text/javascript" src="lib/js/config.js"></script>
  	</head>
 
 	<body>
@@ -64,59 +69,7 @@
                 </div>
         </div>
     </div>
-		<script src="js/mui.min.js"></script>
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/share.js"></script>
-		<script type="text/javascript">
-			window.onload=function(){
-				var tags=document.getElementsByClassName('tags');
-				var reg=document.getElementById('reg');
-				var id = getCookies('id', '; ', '=');
-				function autoDepartment(data){
-					var data=eval(data);
- 					for(var i=0;i<data.length;i++){
- 						span=document.createElement('span');
-						input=document.createElement('input');
-						text=document.createTextNode(data[i].DepartmentName);
-						input.setAttribute('departmentid',data[i].DepartmentId);
-						input.setAttribute('type','radio');
-						input.setAttribute('name','YPBM');
- 						span.appendChild(input);
-						span.appendChild(text);
-						tags[0].appendChild(span);
-					}
-				}
-
-				jsonAjax('community/joinus/'+id,'GET','',autoDepartment);
-
-				reg.onclick=function(){
-	  				var name=$('.name').val();
-	 				var departmentId=$('.tags').find("input:radio[name='YPBM']:checked").attr('departmentid');
-	  				var sex=$('input:radio[name="XB"]:checked').val();
-	 				var major=$('.ZYclassbox').val();
-	 				var studentid=$('.studentid').val();
-	 				var qq=$('.QQbox').val();
-	 				var tel=$('.phonebox').val();
-	 				var desc=$('.aboutbox').val();
-	                var message=JSON.stringify({
-	                  		Name:name,
-	                  		DepartmentId:departmentId,
-	                  		Gender:sex,
-	                  		StudentId:studentid,
-	                  		Class:major,
-	                  		QQ:qq,
-	                  		Tel:tel,
-	                  		Introduction:desc
-	                  });
-
-	                function upload(data){
-	                   alert(data.message);
-    				 }
-
-					jsonAjax('community/joinus/'+id,'POST',message,upload);
-				}
-			}
-		</script>
+	    <script type="text/javascript" src="lib/js/controller.js"></script>
+        <script type="text/javascript" src="lib/js/directive.js"></script>
 	</body>
-
 </html>
