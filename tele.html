@@ -12,11 +12,10 @@
         <script src="src/js/mui.min.js"></script>
         <script type="text/javascript" src="src/js/jquery.min.js"></script>
         <script type="text/javascript" src="src/js/angular.js"></script>
-        <script type="text/javascript" src="src/js/angular-localstorage.js"></script>
         <script type="text/javascript" src="lib/js/config.js"></script>
    	</head>
 
-<body>
+<body ng-app="myApp" ng-controller="dataCtrl">
     <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
         <div class="mui-inner-wrap">
             <header class="mui-bar mui-bar-nav">
@@ -43,12 +42,16 @@
                     </ul>
                     <div class="mui-content">
                         <div class="mui-content-padded details">
+                            <h4 ng-repeat='cat in inner.cats'>
+                                <p ng-cloak>{{cat.value}}</p>
+                            </h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="lib/js/function.js"></script>
     <script type="text/javascript" src="lib/js/controller.js"></script>
     <script type="text/javascript" src="lib/js/directive.js"></script>
     <script>

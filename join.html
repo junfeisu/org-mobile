@@ -19,11 +19,10 @@
 	    <script type="text/javascript" src="src/js/mui.min.js"></script>
 		<script type="text/javascript" src="src/js/jquery.min.js"></script>
 	    <script type="text/javascript" src="src/js/angular.js"></script>
-	    <script type="text/javascript" src="src/js/angular-localstorage.js"></script>
 	    <script type="text/javascript" src="lib/js/config.js"></script>
  	</head>
 
-	<body>
+	<body ng-app="myApp" ng-controller="joinCtrl">
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="inner.html"></a>
 			<h1 class="mui-title">招新报名</h1>
@@ -33,7 +32,7 @@
                 <div class="inputs">
                     <div class="input-box box1">
                         <span>姓名:</span>
-                        <input class="namebox" type="text" name="XM" class="name">
+                        <input class="namebox" type="text" name="XM">
                     </div>
                     <div class="box6">
                         <span>性别:</span>
@@ -44,7 +43,7 @@
                     </div>
                     <div class="input-box box2">
                         <span>学号:</span>
-                        <input class="IDbox" name="StudentID" type="text"class="studentid">
+                        <input class="IDbox" name="StudentID" type="text">
                     </div>
                     <div class="input-box box3">
                         <span>班级:</span>
@@ -52,7 +51,7 @@
                     </div>
                     <div class="input-box box4">
                         <span>QQ:</span>
-                        <input class="QQbox" name="QQ" type="text">
+                        <input class="QQbox" name="QQ" type="text" >
                     </div>
                     <div class="input-box box5">
                         <span>电话:</span>
@@ -61,14 +60,18 @@
                     <div class="ww"></div>
                     <div class="tags">
                         <label>应聘部门:</label>
+                        <span ng-repeat="depa in depas">
+                            <input departmentid="{{depa.DepartmentId}}" type="radio" name="YPBM">{{depa.DepartmentName}}
+                        </span>
                     </div>
                     <textarea class="textarea aboutbox" name="GRJJ" placeholder="自我介绍"></textarea>
                     <div class="submit">
-                        <input type="submit" id="reg" value="提交" />
+                        <input join-directive type="submit" id="reg" value="提交" />
                     </div>
                 </div>
         </div>
     </div>
+        <script type="text/javascript" src="lib/js/function.js"></script>
 	    <script type="text/javascript" src="lib/js/controller.js"></script>
         <script type="text/javascript" src="lib/js/directive.js"></script>
 	</body>

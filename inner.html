@@ -7,13 +7,12 @@
 		<script type="text/javascript" src="src/js/mui.min.js"></script>
 		<script type="text/javascript" src='src/js/jquery.min.js'></script>
 		<script type="text/javascript" src='src/js/angular.js'></script>
-		<script type="text/javascript" src='src/js/angular-localstorage.js'></script>
 		<script type="text/javascript" src='lib/js/config.js'></script>
 		<link href="src/css/mui.min.css" rel="stylesheet" />	
 		<link rel="stylesheet" href="src/css/inner.css" />
     </head>
 
-	<body ng-app="myApp" ng-controller="innerCtrl">
+	<body ng-app="myApp" ng-controller="dataCtrl">
 		<!--侧滑菜单容器-->
 		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
 			<!--菜单部分-->
@@ -53,14 +52,13 @@
 			<div class="mui-inner-wrap">
 				<header class="mui-bar mui-bar-nav">
 					<h1 id="info" class="mui-title">
-						<img class="inner-org-img" src="" />
-										<span class="org-name"></span>
+						<img class="inner-org-img" ng-src="{{inner.logosrc}}" />
+						<span class="org-name"></span>
 					</h1>
 					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
 				</header>
 				<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
 					<div class="mui-scroll">
-
 						<ul class="mui-table-view">
 							<li class="mui-table-view-cell">
 								<a class="blue-line-wrapper">
@@ -71,7 +69,7 @@
 						</ul>
 						<div class="mui-content">
 							<div class="mui-content-padded">
-								<!-- <p>{{}}</p> -->
+								<p>{{inner.intr}}</p>
  							</div>
 						</div>
 					</div>
@@ -84,6 +82,7 @@
 			});
 		</script>
 		<script type="text/javascript" src="lib/js/controller.js"></script>
+		<script type="text/javascript" src="lib/js/function.js"></script>
         <script type="text/javascript" src="lib/js/directive.js"></script>
 	</body>
 
