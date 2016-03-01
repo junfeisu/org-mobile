@@ -15,7 +15,7 @@
         <script type="text/javascript" src="src/js/angular.js"></script>
         <script type="text/javascript" src="lib/js/config.js"></script>
     </head>
-<body ng-app="myApp" ng-controller="myController">
+<body ng-app="myApp" ng-controller="logCtrl">
     <header class="mui-bar mui-bar-nav">
         <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="inner.html"></a>
         <h1 class="mui-title"></h1>
@@ -35,7 +35,7 @@
                 <p class="title" ng-cloak>{{log.LogTitle}}</p>
                 <p class="mui-pull-right" ng-cloak>{{log.UpTime}}</p>
                 <p ng-cloak >
-                    <img class="log-img" ng-src="{{log.IndexPic}}" />
+                    <img class="log-img" ng-src="http://community.new.ncuhome.cn{{log.IndexPic}}" />
                     {{log.PreText}}
                 </p>
             </div>
@@ -46,6 +46,7 @@
             swipeBack: true //启用右滑关闭功能
         });
     </script>
+    <script type="text/javascript" src="lib/js/function.js"></script>
     <script type="text/javascript" src="lib/js/controller.js"></script>
     <script type="text/javascript" src="lib/js/directive.js"></script>
 </body>

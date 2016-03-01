@@ -36,17 +36,14 @@
         </li>
     </ul>
     <div class="mui-content">
-        <!-- <div class="mui-content-padded">
+        <div class="mui-content-padded" ng-repeat="pic in pics">
             <a>
-                <img src="img/04.jpg" data-preview-src="" data-preview-group="1" />
-                <p>我什么都不知道我什么都不知道</p>
+                <img ng-src="http://community.new.ncuhome.cn{{pic.PicSrc}}" data-preview-src="" data-preview-group="1" />
+                <p>{{pic.PicIntr}}</p>
             </a>
         </div>
-        <div class="mui-content-padded">
-            <img src="img/05.jpg" data-preview-src="" data-preview-group="1" />
-            <p>我什么都不知道我什么都不知道</p>
-        </div> -->
     </div>
+    <script type="text/javascript" src="lib/js/function.js"></script>
     <script type="text/javascript" src="lib/js/controller.js"></script>
     <script type="text/javascript" src="lib/js/directive.js"></script>
 </body>

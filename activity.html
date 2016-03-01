@@ -18,7 +18,7 @@
 			mui.init();
 		</script>
 	</head>
-		<body ng-app='myApp' ng-controller="activityCtrl">
+		<body ng-app='myApp' ng-controller="newsCtrl">
 			<header class="mui-bar mui-bar-nav">
 				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="inner.html"></a>
 				<h1 class="mui-title"></h1>
@@ -32,8 +32,15 @@
 				</li>
 			</ul>
 			<div class="wrap" id="wrap">
+				<div ng-repeat="new in news">
+					<a href="javascript:void(0)">
+						<img ng-src="http://community.new.ncuhome.cn{{new.Poster}}" data-preview-src="" data-preview-group="1">
+					</a>
+					<p>{{new.ActivityIntroduction}}</p>
+				</div>
    			</div>
 			
+			<script type="text/javascript" src="lib/js/function.js"></script>
 			<script type="text/javascript" src="lib/js/controller.js"></script>
 	        <script type="text/javascript" src="lib/js/directive.js"></script>
 			<script>
