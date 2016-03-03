@@ -191,13 +191,13 @@ input[type=submit]:enabled:active {
 }
 .triangle img {
 	position: absolute;
-	z-index: 999;
+	z-index: 99;
 	right: 9px;
 	top: -23px;
 }
 .demo .article {
 	float: left;
-	
+	z-index: 999;
 	position: absolute;
 	right: 6px;
 	top: 10px;
