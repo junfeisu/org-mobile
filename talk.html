@@ -47,14 +47,15 @@
 					<ul class="mui-table-view" ng-repeat="mesg in mesgs" >
 						<li class="mui-table-view-cell" ng-repeat="repl in mesg.Replies">
 							<img ng-src="http://community.new.ncuhome.cn{{repl.HeadPic}}" class="iconpic mui-pull-left">
-							<div class="mui-pull-right left-part"></div>
-							<span class="user-name mui-pull-left" ng-cloak>{{repl.UserName}}</span>
-							<span class="time mui-pull-left" ng-cloak>{{repl.Time}}</span>
-							<div class="mui-clearfix"></div>
-							<p ng-cloak>
-								{{repl.Content}}
-								<a class="entr" entr-directive messageid={{mesg.MessageId}}>回复</a>
-							</p>
+                            <div class="mui-pull-right left-part">
+                                <span class="user-name mui-pull-left" ng-cloak>{{repl.UserName}}</span>
+                                <span class="time mui-pull-left" ng-cloak>{{repl.Time}}</span>
+                                <div class="mui-clearfix"></div>
+                                <p ng-cloak>
+                                    {{repl.Content}}
+                                    <a class="entr" entr-directive messageid={{mesg.MessageId}}>回复</a>
+                                </p>
+                            </div>
 						</li>
 					</ul>
   				</div>

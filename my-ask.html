@@ -37,7 +37,20 @@
 		</ul>
 		<div class="mui-content">
 			<div class="mui-content-padded">
-
+                <ul class="mui-table-view" ng-repeat="que in ques">
+                    <li class="mui-table-view-cell" ng-repeat="repl in que.Replies">
+                        <img ng-src="http://community.new.ncuhome.cn{{repl.HeadPic}}" class="iconpic mui-pull-left">
+                        <div class="mui-pull-right left-part">
+                            <span class="user-name mui-pull-left" ng-cloak>{{repl.UserName}}</span>
+                            <span class="time mui-pull-left" ng-cloak>{{repl.Time}}</span>
+                            <div class="mui-clearfix"></div>
+                            <p ng-cloak>
+                                {{repl.Content}}
+                                <a class="entr" entr-directive messageid={{que.MessageId}}>回复</a>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
  			</div>
 
 			<div id="reply" class="mui-modal">
