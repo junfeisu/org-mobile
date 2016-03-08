@@ -222,3 +222,9 @@ input[type=submit]:enabled:active {
 	left: 5px;
 	top: 25%;
 }
+
+.active{
+	background: #b2b2b2;
+	opacity: 0.1;
+	color: #007aff !important;
+}

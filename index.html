@@ -49,9 +49,9 @@
         <div class="mui-content">
             <div id="slider" class="mui-slider">
                 <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-                    <a order="whole" class="mui-control-item" ng-click="wholeShow()">全部</a>
-                    <a order="first" class="mui-control-item" ng-click="firstShow()">一级</a>
-                    <a order="second" class="mui-control-item"  ng-click="secondShow()">二级</a>
+                    <a order="whole" class="mui-control-item active" ng-click="wholeShow($event)">全部</a>
+                    <a order="first" class="mui-control-item" ng-click="firstShow($event)">一级</a>
+                    <a order="second" class="mui-control-item"  ng-click="secondShow($event)">二级</a>
                 </div>
             </div>
             <div class="mui-slider-group" id="mui-slider-group">
